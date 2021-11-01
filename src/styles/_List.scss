@@ -402,10 +402,10 @@
   .table-title {
     display: flex;
     align-items: center;
-    color: #000000;
+    color: $gray-900;
     font-size: 16px;
     line-height: 1;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
 
     span {
       font-weight: 400;

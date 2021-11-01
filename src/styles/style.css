@@ -235,6 +235,18 @@ a:hover {
   width: 25%;
   padding-right: 15px; }
 
+.search-dropdown-wrapper button {
+  width: 25%;
+  padding-right: 15px;
+  padding-left: 20px;
+  padding-top: 5px;
+  justify-content: flex-start; }
+
+.search-dropdown-wrapper button span {
+  width: auto;
+  text-transform: none;
+  letter-spacing: 0; }
+
 .search-dropdown-wrapper .dropdown {
   width: 100% !important; }
 
