@@ -30,10 +30,11 @@
 }
 
 .score-rounded {
-  position: absolute;
-  right: -50px;
-  top: 2px;
-  border-radius: 50%;
+  padding-left: 10px;
+  // position: absolute;
+  // right: -50px;
+  // top: 2px;
+  // border-radius: 50%;
 }
 
 .clearly-badge {
@@ -267,17 +268,21 @@
 .tile-row .edit-icon {
   position: absolute;
   right: 0;
-  background: red;
-  display: block;
+  display: flex;
   font-size: 0;
   height: 100%;
   top: 0;
   width: 44px;
-  background: #fff url('../images/icons/edit.svg') center / 24px 24px no-repeat;
+  // background: #fff url('../images/icons/edit.svg') center / 24px 24px no-repeat;
   transition: opacity $trans;
 
-  &:hover {
-    opacity: 0.6;
+  svg {
+    margin: auto;
+    &:hover {
+      .icon-tag {
+        fill: #86b7fe;
+      }
+    }
   }
 }
 
@@ -533,51 +538,6 @@
     margin: 4px 0;
     color: $gray-900;
     font-weight: 500;
-  }
-}
-
-.diractry-viewer {
-  .breadcrumbs-container {
-    display: flex;
-    padding-bottom: 15px;
-    .breadcrumb-item {
-      color: #1d52d4;
-      font-weight: 500;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .breadcrumb-last-item {
-      color: black !important;
-    }
-  }
-
-  .directory-folder-icon {
-    padding-right: 10px;
-  }
-
-  .ant-table-row-expand-icon {
-    display: none;
-  }
-
-  .column-license {
-    .text-gray {
-      color: $gray-500;
-    }
-    .text-black {
-      color: $gray-900;
-    }
-  }
-
-  .edit-data {
-    .edit-icon {
-      cursor: pointer;
-
-      &:hover {
-        path {
-          fill: #1d52d4;
-        }
-      }
-    }
   }
 }
 

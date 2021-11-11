@@ -37,7 +37,8 @@ export default class FilterBar extends Component {
     clearOnChange: PropTypes.bool,
     defaultValue: PropTypes.string,
     onSearch: PropTypes.func.isRequired,
-    onClear: PropTypes.func
+    onClear: PropTypes.func,
+    onFocusChange: PropTypes.func
   }
 
   constructor(props) {
@@ -78,6 +79,8 @@ export default class FilterBar extends Component {
         options={options.list}
         isLoading={options.isFetching}
         onSearch={onSearch}
+        onFocus={e => this.props.onFocusChange(true)}
+        onBlur={e => this.props.onFocusChange(false)}
         labelKey={option => {
           return option.namespace ? `${option.namespace}/${option.name}` : option.name
         }}

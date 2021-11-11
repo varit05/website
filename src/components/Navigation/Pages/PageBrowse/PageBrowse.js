@@ -34,7 +34,8 @@ class PageBrowse extends SystemManagedList {
   constructor(props) {
     super(props)
     this.state = {
-      activeSort: 'releaseDate-desc'
+      activeSort: 'releaseDate-desc',
+      searchFocused: false
     }
     this.onFilter = this.onFilter.bind(this)
     this.onSort = this.onSort.bind(this)
@@ -65,6 +66,10 @@ class PageBrowse extends SystemManagedList {
     this.setState({ activeName: value }, () => this.updateData())
   }
 
+  onFocusChange = value => {
+    this.setState({ searchFocused: value })
+  }
+
   tableTitle() {
     return 'Browse'
   }
@@ -86,17 +91,20 @@ class PageBrowse extends SystemManagedList {
     return (
       <>
         <div className="top-search-bar">
-          <div className="search-logo">
-            <img src={searchSvg} alt="search" />
-          </div>
-          <div className="search-input-container">
-            <FilterBar
-              options={options}
-              onChange={this.onBrowse}
-              onSearch={this.onSearch}
-              onClear={this.onBrowse}
-              clearOnChange
-            />
+          <div className={this.state.searchFocused ? 'focused-search-bar-container' : 'search-bar-container'}>
+            <div className="search-logo">
+              <img src={searchSvg} alt="search" />
+            </div>
+            <div className="search-input-container">
+              <FilterBar
+                options={options}
+                onChange={this.onBrowse}
+                onSearch={this.onSearch}
+                onClear={this.onBrowse}
+                onFocusChange={this.onFocusChange}
+                clearOnChange
+              />
+            </div>
           </div>
           <div className="search-dropdown-wrapper">
             {/* {this.renderFilter(types, 'Type', 'type')} */}

@@ -8,15 +8,15 @@ import Definition from '../../../utils/definition'
 import { ROUTE_DEFINITIONS } from '../../../utils/routingConstants'
 import { withResize } from '../../../utils/WindowProvider'
 import ButtonWithTooltip from './ButtonWithTooltip'
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { IconButton } from "@material-ui/core"
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+import { IconButton } from '@material-ui/core'
 class ComponentButtons extends Component {
   constructor(props) {
     super(props)
     this.handleMenu = this.handleMenu.bind(this)
     this.state = {
-      menuOpen: false,
-    };
+      menuOpen: false
+    }
   }
   static propTypes = {
     definition: PropTypes.object,
@@ -89,22 +89,36 @@ class ComponentButtons extends Component {
     return (
       <>
         <IconButton className="menuOpenBtn" onClick={this.handleMenu}>
-          <MoreVertIcon />
+          <MoreVertIcon fontSize="large" />
         </IconButton>
-        <div className={`clearly-menu ${this.state.menuOpen ? 'opened' : "closed"}`}>
+        <div className={`clearly-menu ${this.state.menuOpen ? 'opened' : 'closed'}`}>
           <a
             href={`${window.location.origin}${ROUTE_DEFINITIONS}/${component.toPath()}`}
-            onClick={(event) => {
-              this.handleMenu();
-            }} className="clearly-menu-btns">View Components</a>
-          <button onClick={() => {
-            this.handleMenu();
-            this.revertComponent(component)
-          }} className="clearly-menu-btns">Revert Changes</button>
-          <button onClick={() => {
-            this.handleMenu();
-            this.inspectComponent.bind(this, currentComponent, definition)
-          }} className="clearly-menu-btns">Add Source Definition</button>
+            onClick={event => {
+              this.handleMenu()
+            }}
+            className="clearly-menu-btns"
+          >
+            View Components
+          </a>
+          <button
+            onClick={() => {
+              this.handleMenu()
+              this.revertComponent(component)
+            }}
+            className="clearly-menu-btns"
+          >
+            Revert Changes
+          </button>
+          <button
+            onClick={() => {
+              this.handleMenu()
+              this.inspectComponent.bind(this, currentComponent, definition)
+            }}
+            className="clearly-menu-btns"
+          >
+            Add Source Definition
+          </button>
         </div>
 
         {/*
@@ -186,9 +200,7 @@ class ComponentButtons extends Component {
     const component = EntitySpec.fromObject(currentComponent)
 
     return (
-      <div className="list-activity-area">
-        {this.renderButtonGroup()}
-      </div>
+      <div className="list-activity-area">{this.renderButtonGroup()}</div>
 
       // <div className="list-activity-area">
       //   {isMobile ? this.renderMobileButtonGroup() : this.renderButtonGroup()}
