@@ -45,15 +45,15 @@ class HeaderSection extends Component {
 
     return (
       <>
-        <h2><DefinitionTitle definition={item} showNamespace={false} /></h2>
+        <div className="d-flex align-items-center">
+          <h2>
+            <DefinitionTitle definition={item} showNamespace={false} />
+          </h2>
+          {scores && <ScoreRenderer scores={scores} definition={item} />}
+        </div>
         <div className="pkg-ver">
           <DefinitionRevision definition={item} showNamespace={false} />
         </div>
-        {scores && (
-          <span className="score-rounded">
-            <ScoreRenderer scores={scores} definition={item} />
-          </span>
-        )}
         {isCurated && (
           <Tag className="cd-badge" color="purple">
             Curated

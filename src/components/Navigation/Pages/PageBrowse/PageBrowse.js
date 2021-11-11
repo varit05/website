@@ -26,7 +26,7 @@ import FilterBar from '../../../FilterBar'
 import EntitySpec from '../../../../utils/entitySpec'
 import ActiveFilters from '../../Sections/ActiveFilters'
 import { Typography } from '@material-ui/core'
-import searchSvg from "../../../../images/icons/searchSvg.svg"
+import searchSvg from '../../../../images/icons/searchSvg.svg'
 /**
  * Page that show to the user a list of interesting definitions to curate
  */
@@ -34,7 +34,8 @@ class PageBrowse extends SystemManagedList {
   constructor(props) {
     super(props)
     this.state = {
-      activeSort: 'releaseDate-desc'
+      activeSort: 'releaseDate-desc',
+      searchFocused: false
     }
     this.onFilter = this.onFilter.bind(this)
     this.onSort = this.onSort.bind(this)
@@ -47,13 +48,13 @@ class PageBrowse extends SystemManagedList {
     const urlParams = getParamsFromUrl(this.props.location.search)
     urlParams
       ? this.setState(
-        {
-          activeSort: urlParams.sort && urlParams.sort,
-          activeName: urlParams.name && urlParams.name,
-          activeFilters: omit(urlParams, ['sort', 'name'])
-        },
-        () => this.updateData()
-      )
+          {
+            activeSort: urlParams.sort && urlParams.sort,
+            activeName: urlParams.name && urlParams.name,
+            activeFilters: omit(urlParams, ['sort', 'name'])
+          },
+          () => this.updateData()
+        )
       : this.updateData()
   }
 
@@ -63,6 +64,10 @@ class PageBrowse extends SystemManagedList {
 
   onBrowse = value => {
     this.setState({ activeName: value }, () => this.updateData())
+  }
+
+  onFocusChange = value => {
+    this.setState({ searchFocused: value })
   }
 
   tableTitle() {
@@ -86,17 +91,20 @@ class PageBrowse extends SystemManagedList {
     return (
       <>
         <div className="top-search-bar">
-          <div className="search-logo">
-            <img src={searchSvg} alt="search" />
-          </div>
-          <div className="search-input-container">
-            <FilterBar
-              options={options}
-              onChange={this.onBrowse}
-              onSearch={this.onSearch}
-              onClear={this.onBrowse}
-              clearOnChange
-            />
+          <div className={this.state.searchFocused ? 'focused-search-bar-container' : 'search-bar-container'}>
+            <div className="search-logo">
+              <img src={searchSvg} alt="search" />
+            </div>
+            <div className="search-input-container">
+              <FilterBar
+                options={options}
+                onChange={this.onBrowse}
+                onSearch={this.onSearch}
+                onClear={this.onBrowse}
+                onFocusChange={this.onFocusChange}
+                clearOnChange
+              />
+            </div>
           </div>
           <div className="search-dropdown-wrapper">
             {/* {this.renderFilter(types, 'Type', 'type')} */}
@@ -232,7 +240,6 @@ class PageBrowse extends SystemManagedList {
   }
 
   async updateData(continuationToken) {
-
     const { activeFilters, activeSort, activeName } = this.state
     const query = Object.assign({}, activeFilters)
     if (continuationToken) query.continuationToken = continuationToken
@@ -296,9 +303,7 @@ class PageBrowse extends SystemManagedList {
           <div className="col-12">
             <h2 className="h1 mb-4">Search Components</h2>
           </div>
-          <div>
-            {this.renderTopFilters()}
-          </div>
+          <div>{this.renderTopFilters()}</div>
           <div className="col-12">
             <ContributePrompt
               ref={this.contributeModal}
@@ -309,14 +314,12 @@ class PageBrowse extends SystemManagedList {
             />
           </div>
           <div className="col-12">
-            <Section className="flex-grow-column clearly-component-wrap"
-            // name={this.tableTitle()}
-            // actionButton={this.renderButtons()}
+            <Section
+              className="flex-grow-column clearly-component-wrap"
+              // name={this.tableTitle()}
+              // actionButton={this.renderButtons()}
             >
-              <div
-                className={
-                  classNames('clearly-table flex-grow',
-                    { loading: components.isFetching })}>
+              <div className={classNames('clearly-table flex-grow', { loading: components.isFetching })}>
                 <i className="fas fa-spinner fa-spin" />
                 <ComponentList
                   multiSelectEnabled={this.multiSelectEnabled}

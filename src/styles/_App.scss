@@ -7,7 +7,6 @@ body {
   font-family: 'inter', sans-serif;
 }
 
-
 body,
 input,
 button,
@@ -37,6 +36,20 @@ textarea {
     height: 20px;
     line-height: 0.1;
     padding: 8px 4px 1px 4px;
+  }
+}
+
+.pckg-title-details {
+  .cd-badge {
+    height: 32px;
+    width: 32px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 100%;
+    margin-left: 10px;
+    margin-bottom: 2px;
+    padding: 0px;
   }
 }
 
@@ -272,6 +285,10 @@ textarea {
   font-size: x-small;
   padding-right: 4px;
   cursor: pointer;
+
+  &:hover {
+    color: blue;
+  }
 }
 
 .editable-editor {
@@ -297,6 +314,11 @@ textarea {
 .two-line-entry {
   display: flex;
   flex-direction: column;
+
+  &:hover {
+    border: 1px solid #86b7fe;
+    // border-bottom: 2px solid #86b7fe !important;
+  }
 }
 
 .definition {
@@ -552,7 +574,6 @@ hr {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 
 .clearly-component-wrap {
   > .section-header {
