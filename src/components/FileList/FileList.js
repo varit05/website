@@ -12,8 +12,9 @@ import FacetsRenderer from '../../components/FacetsRenderer'
 import Contribution from '../../utils/contribution'
 import FileListSpec from '../../utils/filelist'
 import Attachments from '../../utils/attachments'
-import folderIcon from "../../images/icons/folderIcon.svg"
-import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import folderIcon from '../../images/icons/folder.svg'
+import fileIcon from '../../images/icons/file.svg'
+import FolderOpenIcon from '@material-ui/icons/FolderOpen'
 export default class FileList extends PureComponent {
   static propTypes = {
     onChange: PropTypes.func,
@@ -178,11 +179,17 @@ export default class FileList extends PureComponent {
     const attachments = new Attachments({ ...definition.coordinates, path, row })
     const url = attachments.getFileAttachmentUrl()
     return url ? (
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        {row.name}
-      </a>
+      <span>
+        <img src={fileIcon} alt="folder-icon" className="directory-folder-icon" />
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {row.name}
+        </a>
+      </span>
     ) : (
-      <span>{row.name}</span>
+      <span>
+        <img src={folderIcon} alt="folder-icon" className="directory-folder-icon" />
+        {row.name}
+      </span>
     )
   }
 
@@ -312,6 +319,7 @@ export default class FileList extends PureComponent {
     return (
       <Table
         // className="file-list"
+        className="diractry-viewer"
         columns={columns}
         dataSource={searchText ? filteredFiles : files}
         expandableRowIcon={<FolderOpenIcon />}
@@ -319,9 +327,10 @@ export default class FileList extends PureComponent {
         expandedRowKeys={expandedRows}
         onExpandedRowsChange={expandedRows => expandedRows.length > 0 && this.setState({ expandedRows })}
         pagination={false}
-      // bordered={false}
-      // indentSize={28}
-      // scroll={{ y: 650 }}
+        onRowClick={e => (e.children ? this.setState({ files: e.children }) : null)}
+        // bordered={false}
+        // indentSize={28}
+        // scroll={{ y: 650 }}
       />
     )
   }
