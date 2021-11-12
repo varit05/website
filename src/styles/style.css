@@ -270,27 +270,6 @@ a:hover {
   padding: 0;
 }
 
-.focus-visible {
-  color: #495057;
-  background-color: #fff !important;
-  border-color: #80bdff !important;
-  outline: 0 !important;
-  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%) !important;
-}
-
-.filter-bar > .form-control::focus {
-  border: none !important;
-  outline: none !important;
-  border: 1px solid !important;
-  outline: none !important;
-  border-color: #86b7fe !important;
-  background-color: #3ec1fd !important;
-  box-shadow: none !important;
-  border-radius: 0;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
-
 .filterBar-itemRenderer {
   color: black !important;
 }
@@ -371,6 +350,19 @@ a:hover {
 
 .top-search-side-dropdown-items .dropdown-items {
   font-size: 14px !important;
+}
+
+.dropdown-items .filter-selected-check-icon {
+  padding-left: 8px;
+  color: #1d52d4;
+}
+
+.facets-tooltip-content code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
 }
 
 .search-dropdown-wrapper .dropdown-menu {

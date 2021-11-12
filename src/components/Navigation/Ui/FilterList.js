@@ -60,7 +60,7 @@ class FilterList extends Component {
               >
                 <span>{filterType.label}</span>
                 {value && find(value, (filter, filterId) => filterId === id && filter === filterType.value) && (
-                  <i className="fas fa-check" />
+                  <i className="fas fa-check filter-selected-check-icon" />
                 )}
               </MenuItem>
             )
