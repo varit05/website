@@ -82,17 +82,27 @@ class PageHarvest extends Component {
   }
 
   noRowsRenderer() {
-    return <div className="list-noRows">Use the search box above to add components to harvest.</div>
+    return (
+      <div className="list-noRows">
+        <div>
+          <p>
+            <b>There are no components to harvest.</b>
+          </p>
+          <p>Select an component to be added to this list.</p>
+        </div>
+      </div>
+    )
   }
 
   render() {
     const { activeProvider } = this.state
     const { queue } = this.props
     return (
-      <Grid className="main-container flex-column">
+      <Grid className="main-container flex-column harvest-component">
+        <h3 className="page-title">Harvest Components</h3>
         <Row className="show-grid spacer">
           <Col md={6}>{this.renderProviderButtons()}</Col>
-          <Col md={6}>
+          <Col md={4}>
             {activeProvider === 'github' && <GitHubSelector onChange={this.onAddRequest} />}
             {activeProvider === 'mavencentral' && <MavenSelector onChange={this.onAddRequest} />}
             {activeProvider === 'npmjs' && <NpmSelector onChange={this.onAddRequest} />}
@@ -103,8 +113,19 @@ class PageHarvest extends Component {
             {activeProvider === 'rubygems' && <RubyGemsSelector onChange={this.onAddRequest} />}
             {activeProvider === 'debian' && <DebianSelector onChange={this.onAddRequest} />}
           </Col>
+          <Col md={2} className="harvest-action">
+            {this.renderActionButton()}
+          </Col>
         </Row>
-        <Section className="flex-grow-column" name={'Components to harvest'} actionButton={this.renderActionButton()}>
+        <Section className="flex-grow-column">
+          <div className="clearly-header">
+            <div className="table-header-fcloumn">
+              <h4>Selected Component</h4>
+            </div>
+            <div className="table-header-cloumn">
+              <h4>Version </h4>
+            </div>
+          </div>
           <div className="section-body flex-grow">
             <HarvestQueueList
               list={queue.list}

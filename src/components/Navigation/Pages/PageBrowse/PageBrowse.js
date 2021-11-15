@@ -26,7 +26,7 @@ import FilterBar from '../../../FilterBar'
 import EntitySpec from '../../../../utils/entitySpec'
 import ActiveFilters from '../../Sections/ActiveFilters'
 import { Typography } from '@material-ui/core'
-import searchSvg from "../../../../images/icons/searchSvg.svg"
+import searchSvg from '../../../../images/icons/searchSvg.svg'
 /**
  * Page that show to the user a list of interesting definitions to curate
  */
@@ -47,13 +47,13 @@ class PageBrowse extends SystemManagedList {
     const urlParams = getParamsFromUrl(this.props.location.search)
     urlParams
       ? this.setState(
-        {
-          activeSort: urlParams.sort && urlParams.sort,
-          activeName: urlParams.name && urlParams.name,
-          activeFilters: omit(urlParams, ['sort', 'name'])
-        },
-        () => this.updateData()
-      )
+          {
+            activeSort: urlParams.sort && urlParams.sort,
+            activeName: urlParams.name && urlParams.name,
+            activeFilters: omit(urlParams, ['sort', 'name'])
+          },
+          () => this.updateData()
+        )
       : this.updateData()
   }
 
@@ -232,7 +232,6 @@ class PageBrowse extends SystemManagedList {
   }
 
   async updateData(continuationToken) {
-
     const { activeFilters, activeSort, activeName } = this.state
     const query = Object.assign({}, activeFilters)
     if (continuationToken) query.continuationToken = continuationToken
@@ -296,9 +295,7 @@ class PageBrowse extends SystemManagedList {
           <div className="col-12">
             <h2 className="h1 mb-4">Search Components</h2>
           </div>
-          <div>
-            {this.renderTopFilters()}
-          </div>
+          <div>{this.renderTopFilters()}</div>
           <div className="col-12">
             <ContributePrompt
               ref={this.contributeModal}
@@ -309,14 +306,12 @@ class PageBrowse extends SystemManagedList {
             />
           </div>
           <div className="col-12">
-            <Section className="flex-grow-column clearly-component-wrap"
-            // name={this.tableTitle()}
-            // actionButton={this.renderButtons()}
+            <Section
+              className="flex-grow-column clearly-component-wrap"
+              // name={this.tableTitle()}
+              // actionButton={this.renderButtons()}
             >
-              <div
-                className={
-                  classNames('clearly-table flex-grow',
-                    { loading: components.isFetching })}>
+              <div className={classNames('clearly-table flex-grow', { loading: components.isFetching })}>
                 <i className="fas fa-spinner fa-spin" />
                 <ComponentList
                   multiSelectEnabled={this.multiSelectEnabled}
@@ -336,7 +331,7 @@ class PageBrowse extends SystemManagedList {
                   hideVersionSelector
                   hideRemoveButton
                 />
-                {currentDefinition && (
+                {/* {currentDefinition && (
                   <FullDetailPage
                     modalView
                     visible={showFullDetail}
@@ -347,7 +342,7 @@ class PageBrowse extends SystemManagedList {
                     component={currentComponent}
                     readOnly={false}
                   />
-                )}
+                )} */}
               </div>
             </Section>
           </div>
