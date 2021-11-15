@@ -34,7 +34,7 @@ class FullDetailComponent extends Component {
     super(props)
     this.handleTab = this.handleTab.bind(this)
     this.state = {
-      activeTab: 0,
+      activeTab: 1,
     };
   }
   static propTypes = {
@@ -114,15 +114,16 @@ class FullDetailComponent extends Component {
             <span>&nbsp;component</span>
           </Button>
         </div>
-        <Paper className="w-100 rounded">
-          <FileList
-            files={cloneDeep(item.files)}
-            onChange={onChange}
-            component={definition}
-            previewDefinition={previewDefinition}
-            readOnly={readOnly}
-          />
-        </Paper>
+
+        <FileList
+          files={cloneDeep(item.files)}
+          coordinates={item?.coordinates}
+          onChange={onChange}
+          component={definition}
+          previewDefinition={previewDefinition}
+          readOnly={readOnly}
+        />
+
 
       </div>
       // <Section
