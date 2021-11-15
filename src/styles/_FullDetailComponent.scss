@@ -537,12 +537,47 @@
 }
 
 .diractry-viewer {
+  .breadcrumbs-container {
+    display: flex;
+    padding-bottom: 15px;
+    .breadcrumb-item {
+      color: #1d52d4;
+      font-weight: 500;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .breadcrumb-last-item {
+      color: black !important;
+    }
+  }
+
   .directory-folder-icon {
     padding-right: 10px;
   }
 
   .ant-table-row-expand-icon {
     display: none;
+  }
+
+  .column-license {
+    .text-gray {
+      color: $gray-500;
+    }
+    .text-black {
+      color: $gray-900;
+    }
+  }
+
+  .edit-data {
+    .edit-icon {
+      cursor: pointer;
+
+      &:hover {
+        path {
+          fill: #1d52d4;
+        }
+      }
+    }
   }
 }
 
