@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { uiNavigation } from '../actions/ui'
 import { ROUTE_ABOUT } from '../utils/routingConstants'
-import { Clearly } from './'
 
 import aboutSection from '../images/about-section.png'
 import centralized from '../images/Centralized.png'
@@ -19,15 +18,6 @@ import ContributeData from '../images/ContributeData.png'
 import ContributeCode from '../images/ContributeCode.png'
 import AddHarvest from '../images/AddHarvest.png'
 import AdoptPractices from '../images/AdoptPractices.png'
-
-const use = 'sign-out-alt'
-const contribute = 'sign-in-alt'
-const adopt = 'toggle-on'
-
-const clearlyDefined = <Clearly>Defined</Clearly>
-
-const logoColWidth = 3
-const textColWidth = 9
 
 class PageAbout extends Component {
   componentDidMount() {
@@ -93,14 +83,16 @@ class PageAbout extends Component {
     return (
       <>
         <div className="about-container">
-          <img src={aboutSection} alt="logo" width="100%" />
-          <div className="about-main-section">
-            <div className="container">
-              <div className="about-title">Bringing clarity to Open Source Software licenses.</div>
-              <div className="about-description">
-                Welcome to your centralized and curated data store for Open Source Software licenses.
+          <div className="about-image-content">
+            <img src={aboutSection} alt="logo" width="100%" />
+            <div className="about-main-section">
+              <div className="container">
+                <div className="about-title">Bringing clarity to Open Source Software licenses.</div>
+                <div className="about-description">
+                  Welcome to your centralized and curated data store for Open Source Software licenses.
+                </div>
+                <div className="about-get-involved">Get Involved</div>
               </div>
-              <div className="about-get-involved">Get Involved</div>
             </div>
           </div>
           <div className="about-content-section">
