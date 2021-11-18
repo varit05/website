@@ -127,7 +127,7 @@ class Header extends Component {
               <nav className="top-nav px-2 d-flex justify-content-center align-items-center">
                 <ul>
                   <NavItem>FAQ</NavItem>
-                  <NavItem>Get Involved</NavItem>
+                  <NavItem href="/get-involved">Get Involved</NavItem>
                   <NavItem>Contact</NavItem>
                   {this.renderLogin()}
                 </ul>

@@ -8,7 +8,7 @@ import { uiNavigation } from '../actions/ui'
 import { ROUTE_ABOUT } from '../utils/routingConstants'
 import { Collapse } from 'antd'
 
-import aboutSection from '../images/about-section.png'
+import aboutSection from '../images/about-section.svg'
 import centralized from '../images/Centralized.png'
 import openSource from '../images/open-source.png'
 import curated from '../images/curated.png'

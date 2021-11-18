@@ -7,7 +7,7 @@ import { Grid, Row, Col } from 'react-bootstrap'
 import { uiNavigation } from '../actions/ui'
 import { ROUTE_ABOUT } from '../utils/routingConstants'
 
-import aboutSection from '../images/about-section.png'
+import aboutSection from '../images/about-section.svg'
 import centralized from '../images/Centralized.png'
 import openSource from '../images/open-source.png'
 import curated from '../images/curated.png'
@@ -83,28 +83,31 @@ class PageAbout extends Component {
     return (
       <>
         <div className="about-container">
-          <div className="about-image-content">
-            <img src={aboutSection} alt="logo" width="100%" />
-            <div className="about-main-section">
-              <div className="container">
-                <div className="about-title">Bringing clarity to Open Source Software licenses.</div>
-                <div className="about-description">
+
+          <div className="about-hero">
+            <div className="container">
+              <div className="about-hero__content">
+                <h1 className="mkt-h1 about-title">Bringing clarity to Open Source Software licenses.</h1>
+                <p className="about-description">
                   Welcome to your centralized and curated data store for Open Source Software licenses.
-                </div>
-                <div className="about-get-involved">Get Involved</div>
+                </p>
+                <a className="btn-mkt" href="/get-involved">Get Involved</a>
               </div>
             </div>
           </div>
+
+          <img className="about-hero__shapes" src={aboutSection} alt="logo" width="100%" />
+
           <div className="about-content-section">
             <div className="container">
-              <div className="about-content-title">
+              <div className="about-content-title mkt-h2">
                 Maecenas sed diam eget risus varius blandit sit amet non magna.{' '}
               </div>
               <div className="about-content-section-body">
                 <div className="content-block">
                   <img src={centralized} alt="logo" className="about-content-logo" />
                   <div className="content-block-description">
-                    <div>Centralized</div>
+                    <h3 className="mkt-h3">Centralized</h3>
                     <p>
                       ClearlyDefined is you central hub for all things Open Source Software licenses. It’s here you’ll
                       find, or contribute, to critical license data.
@@ -114,7 +117,7 @@ class PageAbout extends Component {
                 <div className="content-block">
                   <img src={openSource} alt="logo" className="about-content-logo" />
                   <div className="content-block-description">
-                    <div>Curated</div>
+                    <h3 className="mkt-h3">Curated</h3>
                     <p>
                       License data is curated by our dedicated team of contributors, and people like you. Our goal is to
                       ensure completeness and accuracy of data.
@@ -124,7 +127,7 @@ class PageAbout extends Component {
                 <div className="content-block">
                   <img src={curated} alt="logo" className="about-content-logo" />
                   <div className="content-block-description">
-                    <div>Open Source</div>
+                    <h3 className="mkt-h3">Open Source</h3>
                     <p>
                       The more, the merrier. We all benefit from the open source nature of ClearlyDefined, where
                       together, we can all make a meaningful contribution.
@@ -140,13 +143,13 @@ class PageAbout extends Component {
           <div className="container">
             <div className="community-content">
               <div>
-                <div className="label">Goals</div>
-                <div className="title">This is a community-wide challenge that needs a community-wide approach.</div>
+                <div className="mkt-h4 pb-4">Goals</div>
+                <div className="mkt-h2">This is a community-wide challenge that needs a community-wide approach.</div>
                 <div className="description">
                   Cras mattis consectetur purus sit amet fermentum. Cum sociis natoque penatibus et magnis dis
                   parturient montes, nascetur ridiculus mus.
                 </div>
-                <div className="learn-more">Learn more</div>
+                <a className="learn-more" href="/stats">Learn more</a>
               </div>
               <div className="left-top"></div>
               <div className="right-top"></div>

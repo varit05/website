@@ -99,8 +99,8 @@ class PageHarvest extends Component {
     const { queue } = this.props
     return (
       <Grid className="main-container flex-column harvest-component">
-        <h3 className="page-title">Harvest Components</h3>
-        <Row className="show-grid spacer">
+        <h3 className="page-title h1">Harvest Components</h3>
+        <Row className="show-grid">
           <Col md={6}>{this.renderProviderButtons()}</Col>
           <Col md={4}>
             {activeProvider === 'github' && <GitHubSelector onChange={this.onAddRequest} />}

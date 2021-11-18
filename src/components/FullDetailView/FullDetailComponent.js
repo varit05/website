@@ -34,7 +34,7 @@ class FullDetailComponent extends Component {
     super(props)
     this.handleTab = this.handleTab.bind(this)
     this.state = {
-      activeTab: 1,
+      activeTab: 0,
     };
   }
   static propTypes = {

@@ -76,6 +76,12 @@
 }
 
 
+.btn-mkt {
+  @include btn;
+  @include btn-success;
+  min-width: 148px;
+}
+
 #curate {
   @include no-btn;
   justify-content: flex-start !important;
