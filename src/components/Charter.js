@@ -72,8 +72,8 @@ class Charter extends Component {
 
   render() {
     return (
-      <div className="get-involved-container">
-        <div className="get-involved-header">
+      <div className="charter-container">
+        <div className="charter-header">
           <div className="container">
             <div className="header-block">
               <img src={UseData} alt="335group" />
@@ -82,10 +82,10 @@ class Charter extends Component {
             </div>
           </div>
         </div>
-        <div className="get-involved-main">
+        <div className="charter-main">
           <Grid>
-            <Row className="get-involved-wrapper">
-              <Col md={3} className="get-involved-side-content">
+            <Row className="charter-wrapper">
+              <Col md={3} className="charter-side-content">
                 {/* <div className="menu-title">Use the Data</div> */}
                 <div className="menu-list menu-list-desktop">
                   {this.menuList.map((item, index) => {
@@ -126,8 +126,8 @@ class Charter extends Component {
                   </Collapse>
                 </div>
               </Col>
-              <Col md={9} className="get-involved-main-content">
-                <div className="menu-title mb-4">ClearlyDefined Coordinates</div>
+              <Col md={9} className="charter-main-content">
+                <div className="menu-title mb-4">Scope</div>
                 <div className="menu-discription mb-5">
                   ClearlyDefined will pursue any data that makes FOSS projects easier to consume and thus more
                   successful. Initially this work will focus on licensing data that form the core of understanding and
@@ -171,12 +171,13 @@ class Charter extends Component {
                   The ordering of this work and effort applied will depend entirely on the community and their
                   interests.
                 </div>
+                <div className="section-divider"></div>
               </Col>
             </Row>
           </Grid>
           <Grid>
-            <Row className="get-involved-wrapper">
-              <Col md={3} className="get-involved-side-content">
+            <Row className="charter-wrapper">
+              <Col md={3} className="charter-side-content">
                 {/* <div className="menu-title">Use the Data</div> */}
                 <div className="menu-list menu-list-desktop">
                   {this.menuList.map((item, index) => {
@@ -217,7 +218,8 @@ class Charter extends Component {
                   </Collapse>
                 </div>
               </Col>
-              <Col md={9} className="get-involved-main-content">
+              <Col md={9} className="charter-main-content">
+                <div className="highlight-text">ClearlyDefined, governed.</div>
                 <div className="menu-title mb-4">Processes</div>
                 <div className="menu-discription mb-5">
                   The continuing goal of ClearlyDefined is to help originating projects craft and maintain clarity
