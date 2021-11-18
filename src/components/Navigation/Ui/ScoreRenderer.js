@@ -54,10 +54,13 @@ class ScoreRenderer extends Component {
     if (!Object.keys(score).includes(name)) return
     const color = this.getColor(score[name], maxScores[name] || 100, ['#d6af22', '#2cbe4e'])
     return (
-      <p style={{ color }}>
-        {label}: {score[name]}
-        {this.renderUnit(maxScores[name])}
-      </p>
+      <span className="d-flex">
+        <p style={{ color: '#fff', paddingRight: '5px' }}>{label}:</p>
+        <p style={{ color }}>
+          {score[name]}
+          {this.renderUnit(maxScores[name])}
+        </p>
+      </span>
     )
   }
 
@@ -131,13 +134,16 @@ class ScoreRenderer extends Component {
     return (
       <Tooltip title={this.renderTooltipContent} key={this.renderTooltipContent} overlayStyle={{ width: '800px' }}>
         {domain ? (
-          <Tag className="cd-badge"
+          <Tag
+            className="cd-badge"
             color={this.getColor(get(domain, 'score.total'))}
-            style={{ color: this.fontColor(get(domain, 'score.total')) }}>
+            style={{ color: this.fontColor(get(domain, 'score.total')) }}
+          >
             {get(domain, 'score.total')}
           </Tag>
         ) : (
-          <Tag className="cd-badge"
+          <Tag
+            className="cd-badge"
             color={this.getColor(scores.effective)}
             style={{ color: this.fontColor(scores.effective) }}
           >

@@ -267,17 +267,21 @@
 .tile-row .edit-icon {
   position: absolute;
   right: 0;
-  background: red;
-  display: block;
+  display: flex;
   font-size: 0;
   height: 100%;
   top: 0;
   width: 44px;
-  background: #fff url('../images/icons/edit.svg') center / 24px 24px no-repeat;
+  // background: #fff url('../images/icons/edit.svg') center / 24px 24px no-repeat;
   transition: opacity $trans;
 
-  &:hover {
-    opacity: 0.6;
+  svg {
+    margin: auto;
+    &:hover {
+      .icon-tag {
+        fill: #86b7fe;
+      }
+    }
   }
 }
 

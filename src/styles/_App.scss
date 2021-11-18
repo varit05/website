@@ -42,6 +42,20 @@ textarea {
   }
 }
 
+.pckg-title-details {
+  .cd-badge {
+    height: 32px;
+    width: 32px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 100%;
+    margin-left: 10px;
+    margin-bottom: 2px;
+    padding: 0px;
+  }
+}
+
 .App-logo {
   height: 150px;
 }
@@ -263,6 +277,10 @@ textarea {
   font-size: x-small;
   padding-right: 4px;
   cursor: pointer;
+
+  &:hover {
+    color: blue;
+  }
 }
 
 .editable-editor {
@@ -288,6 +306,12 @@ textarea {
 .two-line-entry {
   display: flex;
   flex-direction: column;
+
+  &:hover {
+    // border: 1px solid #86b7fe;
+    border: 1px solid $gray-100;
+    // border-bottom: 2px solid #86b7fe !important;
+  }
 }
 
 .definition {

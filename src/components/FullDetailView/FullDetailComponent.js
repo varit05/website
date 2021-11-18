@@ -3,7 +3,7 @@
 
 import React, { Component, Fragment } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import { Button } from "@material-ui/core"
+import { Button } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import cloneDeep from 'lodash/cloneDeep'
 import find from 'lodash/find'
@@ -23,12 +23,12 @@ import CurationsSection from '../Navigation/Sections/CurationsSection'
 import TitleWithScore from '../Navigation/Ui/TitleWithScore'
 import { withResize } from '../../utils/WindowProvider'
 import ComponentDetailsButtons from '.././Navigation/Ui/ComponentDetailsButtons'
-import noteIcon from "../../images/icons/notes.svg"
-import folderIcon from "../../images/icons/folderIcon.png"
-import codeIcon from "../../images/icons/codeIcon.svg"
+import noteIcon from '../../images/icons/notes.svg'
+import folderIcon from '../../images/icons/folderIcon.png'
+import codeIcon from '../../images/icons/codeIcon.svg'
 import { Paper, Typography, Divider } from '@material-ui/core'
-import ScoreRenderer from '.././Navigation/Ui/ScoreRenderer';
-import downloadIcon from "../../images/icons/downloadIcon.svg"
+import ScoreRenderer from '.././Navigation/Ui/ScoreRenderer'
+import downloadIcon from '../../images/icons/downloadIcon.svg'
 class FullDetailComponent extends Component {
   constructor(props) {
     super(props)
@@ -97,20 +97,27 @@ class FullDetailComponent extends Component {
       (_, key) => (key && key.startsWith('files')) || key.startsWith('described.facets')
     )
     return (
-      <div name="Raw data" className="py-0" >
+      <div name="Raw data" className="py-0">
         <div className="pt-2 pb-2 d-flex justify-content-between align-items-start">
           <div className="mr-auto">
             <h2 className="font-weight-bold">Files</h2>
-            <h6>{item?.coordinates?.name} <span>{item?.coordinates?.revision}</span></h6>
+            <h6>
+              {item?.coordinates?.name} <span>{item?.coordinates?.revision}</span>
+            </h6>
           </div>
-          <Button href={get(item, 'described.urls.download')}
+          <Button
+            href={get(item, 'described.urls.download')}
             variant="text"
-            style={{ color: "#1D52D4", textTransform: "lowercase" }}
+            style={{ color: '#1D52D4', textTransform: 'lowercase' }}
             className="mt-auto"
           >
-            <img style={{
-              width: "12px"
-            }} src={downloadIcon} alt="download" />
+            <img
+              style={{
+                width: '12px'
+              }}
+              src={downloadIcon}
+              alt="download"
+            />
             <span>&nbsp;component</span>
           </Button>
         </div>
@@ -179,7 +186,7 @@ class FullDetailComponent extends Component {
     const item = { ...definition.item }
 
     return (
-      <div name="Raw data" className="py-2" >
+      <div name="Raw data" className="py-2">
         <h2 className="py-4 font-weight-bold">Raw Data</h2>
         <RawDataSection
           definition={definition}
@@ -218,9 +225,7 @@ class FullDetailComponent extends Component {
               <div className="col-md-6 col-12">
                 <div className="pckg-main-info">
                   <div className="pckg-img">
-                    <div className="bg-pckg-img">
-                      {image && <img src={image} alt="" />}
-                    </div>
+                    <div className="bg-pckg-img">{image && <img src={image} alt="" />}</div>
                   </div>
                   <div className="pckg-title-details">
                     <HeaderSection {...this.props} />
@@ -237,22 +242,28 @@ class FullDetailComponent extends Component {
               <div className="col-12 pt-3">
                 <div className="tabs-wrappper">
                   <div className="tab-box">
-                    <button className={`tab-btn ${this.state.activeTab === 0 ? 'active-tab-c' : '.'}`}
-                      onClick={() => this.handleTab(0)}>
+                    <button
+                      className={`tab-btn ${this.state.activeTab === 0 ? 'active-tab-c' : '.'}`}
+                      onClick={() => this.handleTab(0)}
+                    >
                       <img src={noteIcon} alt="" />
                       Described and Licensed
                     </button>
                   </div>
                   <div className="tab-box">
-                    <button className={`tab-btn ${this.state.activeTab === 1 ? 'active-tab-c' : '.'}`}
-                      onClick={() => this.handleTab(1)}>
+                    <button
+                      className={`tab-btn ${this.state.activeTab === 1 ? 'active-tab-c' : '.'}`}
+                      onClick={() => this.handleTab(1)}
+                    >
                       <img src={folderIcon} alt="" />
                       Files
                     </button>
                   </div>
                   <div className="tab-box">
-                    <button className={`tab-btn ${this.state.activeTab === 2 ? 'active-tab-c' : '.'}`}
-                      onClick={() => this.handleTab(2)}>
+                    <button
+                      className={`tab-btn ${this.state.activeTab === 2 ? 'active-tab-c' : '.'}`}
+                      onClick={() => this.handleTab(2)}
+                    >
                       <img src={codeIcon} alt="" />
                       Raw Data
                     </button>
@@ -263,85 +274,77 @@ class FullDetailComponent extends Component {
           </div>
         </div>
         <div className="container py-5">
-
           {/*====== Tabe 1 Described and License =======*/}
-          {this.state.activeTab === 0 && <>
-            {/* Described section */}
-            <div className="row">
-              <div className="col-md-6">
-                <Paper className="tile">
-                  <div className="tile-hd">
-                    <Typography variant="h5">
-                      Described
-                    </Typography>
-                    <div className="d-flex describe-right-side">
-                      <span className="mx-2">Score: </span>
-                      <div className="score-badge">
-                        <ScoreRenderer domain={item.described} />
+          {this.state.activeTab === 0 && (
+            <>
+              {/* Described section */}
+              <div className="row">
+                <div className="col-md-6">
+                  <Paper className="tile">
+                    <div className="tile-hd">
+                      <Typography variant="h5">Described</Typography>
+                      <div className="d-flex describe-right-side">
+                        <span className="mx-2">Score: </span>
+                        <div className="score-badge">
+                          <ScoreRenderer domain={item.described} />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <Divider />
-                  <DescribedSection
-                    rawDefinition={item}
-                    {...this.props}
-                  />
-                  {/* <CurationsSection curations={curations} /> */}
-                  {/* <FacetsEditor
+                    <Divider />
+                    <DescribedSection rawDefinition={item} {...this.props} />
+                    {/* <CurationsSection curations={curations} /> */}
+                    {/* <FacetsEditor
                     definition={item}
                     onChange={onChange}
                     previewDefinition={previewDefinition}
                     readOnly={readOnly}
                     onRevert={handleRevert}
                   /> */}
-
-
-
-
-                </Paper>
-              </div>
-              {/* License box */}
-              <div className="col-md-6">
-                <Paper className="tile">
-                  <div className="tile-hd">
-                    <Typography variant="h5">
-                      Licensed
-                    </Typography>
-                    <div className="d-flex describe-right-side">
-                      <span className="mx-2">Score: </span>
-                      <div className="score-badge">
-                        <ScoreRenderer domain={item.licensed} />
+                  </Paper>
+                </div>
+                {/* License box */}
+                <div className="col-md-6">
+                  <Paper className="tile">
+                    <div className="tile-hd">
+                      <Typography variant="h5">Licensed</Typography>
+                      <div className="d-flex describe-right-side">
+                        <span className="mx-2">Score: </span>
+                        <div className="score-badge">
+                          <ScoreRenderer domain={item.licensed} />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <Divider />
-                  <LicensedSection rawDefinition={item} {...this.props} />
-                </Paper>
+                    <Divider />
+                    <LicensedSection rawDefinition={item} {...this.props} />
+                  </Paper>
+                </div>
               </div>
-            </div>
-          </>
-          }
+            </>
+          )}
 
           {/*============ Tab 2  Files ============*/}
-          {this.state.activeTab === 1 && <>
-            <div className="col-12">
-              <div className="py-2 px-4 rounded mb-3">
-                {/* {!isMobile && this.renderFilesSection()} */}
-                {this.renderFilesSection()}
+          {this.state.activeTab === 1 && (
+            <>
+              <div className="col-12">
+                <div className="py-2 px-4 rounded mb-3">
+                  {/* {!isMobile && this.renderFilesSection()} */}
+                  {this.renderFilesSection()}
+                </div>
               </div>
-            </div>
-          </>}
+            </>
+          )}
 
           {/*=========== Tab 3 Raw Data ===============*/}
-          {this.state.activeTab === 2 && <>
-            <div className="col-12">
-              <Paper className="py-2 px-4 rounded mb-3">
-                {/* {!isMobile && this.renderRawDataSection()} */}
-                {this.renderRawDataSection()}
-              </Paper>
-            </div>
-          </>}
-
+          {this.state.activeTab === 2 && (
+            <>
+              <div className="col-12">
+                <Paper className="py-2 px-4 rounded mb-3">
+                  {/* {!isMobile && this.renderRawDataSection()} */}
+                  {this.renderRawDataSection()}
+                </Paper>
+              </div>
+            </>
+          )}
 
           {/* <Row className="view-details-header">
             <Col md={1} xs={2}>
@@ -389,7 +392,6 @@ class FullDetailComponent extends Component {
               {!isMobile && this.renderRawDataSection()}
             </Col>
           </Row> */}
-
         </div>
       </>
     )
