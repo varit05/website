@@ -58,7 +58,7 @@ export default class TwoLineEntry extends React.Component {
         }}
       >
         <div className={`list-row${isEmpty ? ' isEmpty' : ''}`} onClick={onClick}>
-          {this.expandIcon(!isEmpty && panel ? '#5697f7' : null)}
+          {this.expandIcon(!isEmpty && panel ? '#1D52D4' : null)}
           {/* <img
             className={`open-panel-img  ${!isEmpty && panel ? 'rotate-img' : '.'}`}
             src={this.expandIcon(!isEmpty && panel ? 'blue' : null)}

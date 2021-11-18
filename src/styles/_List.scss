@@ -396,6 +396,18 @@
   border-bottom: 1px solid #dfe5ee;
   position: relative;
 
+  .list-row {
+    transition: background $trans;
+
+    &:hover {
+      background: $gray-100 !important;
+    }
+  }
+
+  &:hover .list-row {
+    background: $gray-100 !important;
+  }
+
   .table-title {
     display: flex;
     align-items: center;
@@ -403,6 +415,14 @@
     font-size: 16px;
     line-height: 1;
     font-weight: 500 !important;
+
+    a {
+      transition: color $trans;
+
+      &:hover {
+        color: $brand;
+      }
+    }
 
     span {
       font-weight: 400;

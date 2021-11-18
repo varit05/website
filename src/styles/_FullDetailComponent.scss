@@ -576,11 +576,33 @@
     .edit-icon {
       cursor: pointer;
 
-      &:hover {
-        path {
-          fill: #1d52d4;
+      path, svg {
+        transition: fill $trans;
+
+        &:hover {
+          fill: $brand;
         }
       }
+
+      &:hover {
+        path {
+          fill: $brand;
+        }
+      }
+    }
+  }
+}
+
+.edit-icon.fa-pencil-alt.editable-marker {
+  svg path {
+    fill: $gray-900;
+    transition: fill $trans;
+  }
+
+  &:hover {
+
+    svg, svg path {
+      fill: $brand !important;
     }
   }
 }
