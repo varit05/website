@@ -30,8 +30,8 @@ class DefinitionEntry extends React.Component {
     super(props)
     this.handleModel = this.handleModel.bind(this)
     this.state = {
-      modelOpen: false,
-    };
+      modelOpen: false
+    }
   }
   static propTypes = {
     onChange: PropTypes.func,
@@ -83,21 +83,18 @@ class DefinitionEntry extends React.Component {
 
   renderHeadline(definition, curation) {
     const scores = get(definition, 'scores')
+    const { component } = this.props
     const isCurationPending = Curation.isPending(curation)
     const scoreTag = scores ? (
       <span className="score-badge-table">
         <ScoreRenderer scores={scores} definition={definition} />
       </span>
-    ) : null;
+    ) : null
     const releasedDate = definition?.described?.releaseDate ? (
-      <span className="releasedDate-table">
-        {definition.described.releaseDate}
-      </span>
+      <span className="releasedDate-table">{definition.described.releaseDate}</span>
     ) : (
-      <span className="releasedDate-table">
-        -- -- --
-      </span>
-    );
+      <span className="releasedDate-table">-- -- --</span>
+    )
     const curationTag = isCurationPending ? (
       <span>
         &nbsp;&nbsp;
@@ -108,17 +105,20 @@ class DefinitionEntry extends React.Component {
         </a>
       </span>
     ) : null
-    return (<>
-      <span className="table-title">
-        <DefinitionTitle definition={definition} />
-        &nbsp;/&nbsp;
-        <span><DefinitionRevision definition={definition} className={'definition-revision'} /></span>
-      </span>
+    return (
+      <>
+        <span className="table-title">
+          <DefinitionTitle definition={definition} component={component} />
+          &nbsp;/&nbsp;
+          <span>
+            <DefinitionRevision definition={definition} component={component} className={'definition-revision'} />
+          </span>
+        </span>
 
-      {scoreTag}
-      {releasedDate}
-      {curationTag}
-    </>
+        {scoreTag}
+        {releasedDate}
+        {curationTag}
+      </>
     )
   }
 
@@ -139,12 +139,12 @@ class DefinitionEntry extends React.Component {
 
   renderMessage(definition) {
     const licenseExpression = definition ? this.getValue('licensed.declared') : null
-    return licenseExpression ? (
-      this.renderWithToolTipIfDifferent(
-        'licensed.declared',
-        <span className={this.classIfDifferent('licensed.declared')}>{licenseExpression}</span>
-      )
-    ) : null
+    return licenseExpression
+      ? this.renderWithToolTipIfDifferent(
+          'licensed.declared',
+          <span className={this.classIfDifferent('licensed.declared')}>{licenseExpression}</span>
+        )
+      : null
   }
 
   getPercentage(count, total) {
@@ -205,13 +205,9 @@ class DefinitionEntry extends React.Component {
     return (
       <div className="row row-panel-details">
         <div className="col-md-6 d-flex justify-content-start align-items-center">
-          <span className="panel-details__title">
-            {this.renderLabel('Declared')}:
-          </span>
+          <span className="panel-details__title">{this.renderLabel('Declared')}:</span>
           <div className="panel-details__value">
-            <p>
-              {this.getValue('licensed.declared')}
-            </p>
+            <p>{this.getValue('licensed.declared')}</p>
             {/* {this.renderWithToolTipIfDifferent(
               'licensed.declared',
               <LicensesRenderer
@@ -228,21 +224,15 @@ class DefinitionEntry extends React.Component {
           </div>
         </div>
         <div className="col-md-6 d-flex justify-content-start align-items-center">
-          <span className="panel-details__title">
-            {this.renderLabel('Discovered')}:
-          </span>
+          <span className="panel-details__title">{this.renderLabel('Discovered')}:</span>
           <div className="panel-details__value">
             {this.renderPopover(licensed, 'discovered.expressions', 'Discovered')}
           </div>
         </div>
         <div className="col-md-6 d-flex justify-content-start align-items-center">
-          <span className="panel-details__title">
-            {this.renderLabel('Source')}:
-          </span>
+          <span className="panel-details__title">{this.renderLabel('Source')}:</span>
           <div className="panel-details__value">
-            <p>
-              {Contribution.printCoordinates(this.getValue('described.sourceLocation'))}
-            </p>
+            <p>{Contribution.printCoordinates(this.getValue('described.sourceLocation'))}</p>
             {/* {this.renderWithToolTipIfDifferent(
               'described.sourceLocation',
               <ModalEditor
@@ -265,21 +255,15 @@ class DefinitionEntry extends React.Component {
           </div>
         </div>
         <div className="col-md-6 d-flex justify-content-start align-items-center">
-          <span className="panel-details__title">
-            {this.renderLabel('Attribution')}:
-          </span>
+          <span className="panel-details__title">{this.renderLabel('Attribution')}:</span>
           <div className="panel-details__value">
             {this.renderPopover(licensed, 'attribution.parties', 'Attributions')}
           </div>
         </div>
         <div className="col-md-6 d-flex justify-content-start align-items-center">
-          <span className="panel-details__title">
-            {this.renderLabel('Release')}:
-          </span>
+          <span className="panel-details__title">{this.renderLabel('Release')}:</span>
           <div className="panel-details__value">
-            <p>{
-              Contribution.printDate(this.getValue('described.releaseDate'))
-            }</p>
+            <p>{Contribution.printDate(this.getValue('described.releaseDate'))}</p>
             {/* {this.renderWithToolTipIfDifferent(
               'described.releaseDate',
               <InlineEditor
@@ -299,9 +283,7 @@ class DefinitionEntry extends React.Component {
           </div>
         </div>
         <div className="col-md-6 d-flex justify-content-start align-items-center">
-          <span className="panel-details__title">
-            {this.renderLabel('Files')}:
-          </span>
+          <span className="panel-details__title">{this.renderLabel('Files')}:</span>
           <div className="panel-details__value">
             <FileCountRenderer definition={definition} />
           </div>
@@ -310,9 +292,7 @@ class DefinitionEntry extends React.Component {
           <QuickEditModel
             open={this.state.modelOpen}
             closeModel={this.handleModel}
-            definition={
-              definition
-            }
+            definition={definition}
             field={'described.sourceLocation'}
             extraClass={this.classIfDifferent('described.sourceLocation')}
             readOnly={readOnly}
@@ -320,20 +300,19 @@ class DefinitionEntry extends React.Component {
               declared: this.getOriginalValue('licensed.declared'),
               source: Contribution.printCoordinates(this.getOriginalValue('described.sourceLocation')),
               release: Contribution.printDate(this.getOriginalValue('described.releaseDate')),
-              repo: "",
+              repo: ''
             }}
-
             values={{
               declared: this.getValue('licensed.declared'),
               source: Contribution.printCoordinates(this.getValue('described.sourceLocation')),
               release: Contribution.printDate(this.getValue('described.releaseDate')),
-              repo: "",
+              repo: ''
             }}
             onChange={{
               declared: this.fieldChange('licensed.declared'),
               source: this.fieldChange('described.sourceLocation', isEqual, Contribution.toSourceLocation),
               release: this.fieldChange('described.releaseDate'),
-              repo: "",
+              repo: ''
             }}
             editor={SourcePicker}
             validator={value => true}
