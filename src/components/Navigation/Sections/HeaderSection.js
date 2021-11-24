@@ -36,7 +36,8 @@ class HeaderSection extends Component {
       handleSave,
       isMobile,
       modalView,
-      renderContributeButton
+      renderContributeButton,
+      component
     } = this.props
     const { item } = definition
     const scores = get(item, 'scores')
@@ -47,12 +48,12 @@ class HeaderSection extends Component {
       <>
         <div className="d-flex align-items-center">
           <h2>
-            <DefinitionTitle definition={item} showNamespace={false} />
+            <DefinitionTitle definition={item} showNamespace={false} component={component} />
           </h2>
           {scores && <ScoreRenderer scores={scores} definition={item} />}
         </div>
         <div className="pkg-ver">
-          <DefinitionRevision definition={item} showNamespace={false} />
+          <DefinitionRevision definition={item} showNamespace={false} component={component} />
         </div>
         {isCurated && (
           <Tag className="cd-badge" color="purple">

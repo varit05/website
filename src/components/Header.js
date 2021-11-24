@@ -10,12 +10,12 @@ import { ROUTE_ROOT } from '../utils/routingConstants'
 import { NavItem } from 'react-bootstrap'
 import { LinkContainer, IndexLinkContainer } from 'react-router-bootstrap'
 import { filter, intersection } from 'lodash'
-import Auth from '../utils/auth';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
-import { Button } from "@material-ui/core"
+import Auth from '../utils/auth'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+import MenuIcon from '@material-ui/icons/Menu'
+import CloseIcon from '@material-ui/icons/Close'
+import { Button } from '@material-ui/core'
 
 class Header extends Component {
   constructor(props) {
@@ -24,9 +24,8 @@ class Header extends Component {
     this.doLogout = this.doLogout.bind(this)
     this.checkNav = this.checkNav.bind(this)
     this.state = {
-      menuOpen: true,
-
-    };
+      menuOpen: true
+    }
   }
 
   doLogout(e) {
@@ -54,9 +53,9 @@ class Header extends Component {
   }
 
   renderLogin() {
-    const { session } = this.props;
+    const { session } = this.props
 
-    if (session.isAnonymous && !session.isFetching)
+    if (session?.isAnonymous && !session?.isFetching)
       return (
         <NavItem eventKey={1} onClick={this.handleLogin}>
           <AccountCircleIcon />
@@ -77,23 +76,13 @@ class Header extends Component {
     const filterExpr = isAnonymous
       ? o => o.protected !== 1
       : o => o.protected !== -1 && this.hasPermissions(o.permissions)
-    return (
-      filter(navigation, filterExpr).map((navItem, i) => {
-        return (
-          <IndexLinkContainer active={navItem.isSelected} activeClassName="active"
-            to={navItem.to}
-            key={i}>
-            <NavItem onClick={() =>
-              navItem.customUrl ?
-                this.gotoDocs() :
-                null
-            }>
-              {navItem.title}
-            </NavItem>
-          </IndexLinkContainer>
-        )
-      })
-    )
+    return filter(navigation, filterExpr).map((navItem, i) => {
+      return (
+        <IndexLinkContainer active={navItem.isSelected} activeClassName="active" to={navItem.to} key={i}>
+          <NavItem onClick={() => (navItem.customUrl ? this.gotoDocs() : null)}>{navItem.title}</NavItem>
+        </IndexLinkContainer>
+      )
+    })
   }
 
   hasPermissions(permissions) {
@@ -102,9 +91,9 @@ class Header extends Component {
   }
 
   checkNav() {
-    let width = window.innerWidth;
-    if (width > 768) this.setState({ menuOpen: true });
-    else this.setState({ menuOpen: false });
+    let width = window.innerWidth
+    if (width > 768) this.setState({ menuOpen: true })
+    else this.setState({ menuOpen: false })
   }
 
   componentDidMount() {
@@ -113,8 +102,8 @@ class Header extends Component {
       this.setState({ menuOpen: false })
     }
     return () => {
-      window.removeEventListener('resize', this.checkNav);
-    };
+      window.removeEventListener('resize', this.checkNav)
+    }
   }
 
   render() {
@@ -144,19 +133,20 @@ class Header extends Component {
                 </LinkContainer>
               </div>
               <nav className="clearly-nav d-flex justify-content-end align-items-center">
-                {this.state.menuOpen &&
+                {this.state.menuOpen && (
                   <ul>
                     {/* {this.renderDocs()} */}
                     {/* {this.renderLogin()} */}
-                    {this.renderNavigation
-                      (navigation, session.isAnonymous)
-                    }
-                  </ul>}
+                    {this.renderNavigation(navigation, session?.isAnonymous)}
+                  </ul>
+                )}
 
-                <Button variant="outlined"
-                  classes={{ root: "menu-btn" }}
+                <Button
+                  variant="outlined"
+                  classes={{ root: 'menu-btn' }}
                   className="d-md-none d-block"
-                  onClick={() => this.setState({ menuOpen: !this.state.menuOpen })}>
+                  onClick={() => this.setState({ menuOpen: !this.state.menuOpen })}
+                >
                   {this.state.menuOpen ? <CloseIcon /> : <MenuIcon />}
                 </Button>
               </nav>

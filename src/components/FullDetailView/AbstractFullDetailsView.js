@@ -26,7 +26,8 @@ export class AbstractFullDetailsView extends Component {
       previewDefinition,
       readOnly,
       session,
-      inspectedCuration
+      inspectedCuration,
+      component
     } = this.props
     const { changes } = this.state
 
@@ -58,6 +59,7 @@ export class AbstractFullDetailsView extends Component {
             applyCurationSuggestion={this.applyCurationSuggestion}
             getCurationData={this.getCurationData}
             inspectedCuration={inspectedCuration}
+            component={component}
           />
         )}
       </Modal>
@@ -77,6 +79,7 @@ export class AbstractFullDetailsView extends Component {
           applyCurationSuggestion={this.applyCurationSuggestion}
           getCurationData={this.getCurationData}
           inspectedCuration={inspectedCuration}
+          component={component}
           renderContributeButton={
             <Button
               className="contribute-btn"
@@ -89,7 +92,6 @@ export class AbstractFullDetailsView extends Component {
         />
         <ContributePrompt
           ref={this.contributeModal}
-          session={session}
           onLogin={this.handleLogin}
           actionHandler={this.doContribute}
           definitions={get(definition, 'item.coordinates') ? [get(definition, 'item.coordinates')] : []}
