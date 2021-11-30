@@ -101,7 +101,7 @@ class PageAbout extends Component {
           <div className="about-content-section">
             <div className="container">
               <div className="about-content-title mkt-h2">
-                Maecenas sed diam eget risus varius blandit sit amet non magna.{' '}
+                Helping FOSS projects be more successful through clearly defined project data.{' '}
               </div>
               <div className="about-content-section-body">
                 <div className="content-block">
@@ -145,10 +145,6 @@ class PageAbout extends Component {
               <div>
                 <div className="mkt-h4 pb-4">Goals</div>
                 <div className="mkt-h2">This is a community-wide challenge that needs a community-wide approach.</div>
-                <div className="description">
-                  Cras mattis consectetur purus sit amet fermentum. Cum sociis natoque penatibus et magnis dis
-                  parturient montes, nascetur ridiculus mus.
-                </div>
                 <a className="learn-more" href="/stats">Learn more</a>
               </div>
               <div className="left-top"></div>
