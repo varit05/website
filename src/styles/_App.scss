@@ -279,16 +279,27 @@ main {
 }
 
 .section-title {
-  font-size: 2em;
+  font-size: 18px;
+  color: $gray-900;
+  font-weight: 700;
+
+  a {
+    color: $brand !important;
+    text-decoration: underline !important;
+  }
 
   @media screen and (max-width: $screen-lg) {
-    font-size: 1.5em;
+    font-size: 24px;
   }
 
   .cd-badge {
     margin-bottom: 3px;
     vertical-align: middle;
   }
+}
+
+.section-body {
+  margin-bottom: 72px;
 }
 
 .section-button,

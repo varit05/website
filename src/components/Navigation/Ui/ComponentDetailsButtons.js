@@ -103,13 +103,13 @@ class ComponentDetailsButtons extends Component {
     )
     return (
       <>
-        <IconButton className="radius-btn border mx-2" onClick={() => this.openRegistryURL(item)}>
-          <img src={techIcon} alt="" />
-        </IconButton>
-        <IconButton className="radius-btn border mx-2" onClick={() => this.openSourceForComponent(item)}>
+        <IconButton className="radius-btn border mx-2" onClick={() => this.openRegistryURL(item)} title="Open package URL">
           <img src={shareIcon} alt="" />
         </IconButton>
-        <IconButton className="radius-btn border mx-2" onClick={() => this.copyToClipboard(this.renderUrl())}>
+        <IconButton className="radius-btn border mx-2" onClick={() => this.openSourceForComponent(item)} title="List other versions of this component">
+          <img src={techIcon} alt="" />
+        </IconButton>
+        <IconButton className="radius-btn border mx-2" onClick={() => this.copyToClipboard(this.renderUrl())} title="Copy component URL">
           <img src={linkCopyIcon} alt="" />
         </IconButton>
       </>
