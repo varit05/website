@@ -90,25 +90,30 @@ class PageBrowse extends SystemManagedList {
     const options = { ...filterOptions, list: names }
     return (
       <>
-        <div className="top-search-bar">
-          <div className={this.state.searchFocused ? 'focused-search-bar-container' : 'search-bar-container'}>
-            <div className="search-logo">
-              <img src={searchSvg} alt="search" />
+        <div className="row top-search-and-filter d-flex">
+          <div className="top-search-bar col-10">
+            <div className={this.state.searchFocused ? 'focused-search-bar-container' : 'search-bar-container'}>
+              <div className="search-logo">
+                <img src={searchSvg} alt="search" />
+              </div>
+              <div className="search-input-container">
+                <FilterBar
+                  options={options}
+                  onChange={this.onBrowse}
+                  onSearch={this.onSearch}
+                  onClear={this.onBrowse}
+                  onFocusChange={this.onFocusChange}
+                  clearOnChange
+                />
+              </div>
             </div>
-            <div className="search-input-container">
-              <FilterBar
-                options={options}
-                onChange={this.onBrowse}
-                onSearch={this.onSearch}
-                onClear={this.onBrowse}
-                onFocusChange={this.onFocusChange}
-                clearOnChange
-              />
+            <div className="search-dropdown-wrapper">
+              {/* {this.renderFilter(types, 'Type', 'type')} */}
+              {this.renderFilter(curateFilters, 'Fix something', 'curate', 'success')}
             </div>
           </div>
-          <div className="search-dropdown-wrapper">
-            {/* {this.renderFilter(types, 'Type', 'type')} */}
-            {this.renderFilter(curateFilters, 'Fix something', 'curate', 'success')}
+          <div className="right-side-filter mx-5 col-2">
+            {this.renderFilter(curateFilters, 'Fix something', 'curate', 'success', 'right-filter-dropdown')}
           </div>
         </div>
         {/* <Row className="show-grid spacer">
@@ -226,7 +231,7 @@ class PageBrowse extends SystemManagedList {
     )
   }
 
-  renderFilter(list, title, id, variant) {
+  renderFilter(list, title, id, variant, className) {
     return (
       <FilterList
         list={list}
@@ -235,6 +240,7 @@ class PageBrowse extends SystemManagedList {
         value={this.state.activeFilters}
         onFilter={this.onFilter}
         variant={variant}
+        className={className || ''}
       />
     )
   }

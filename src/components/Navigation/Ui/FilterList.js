@@ -15,7 +15,8 @@ class FilterList extends Component {
     id: PropTypes.string,
     disabled: PropTypes.bool,
     value: PropTypes.object,
-    onFilter: PropTypes.func.isRequired
+    onFilter: PropTypes.func.isRequired,
+    className: PropTypes.string
     // variant: PropTypes.string
   }
   handleClose = () => {
@@ -25,9 +26,9 @@ class FilterList extends Component {
     this.setState({ menu: event.currentTarget })
   }
   render() {
-    const { list, title, id, disabled, onFilter, value, variant } = this.props
+    const { list, title, id, disabled, onFilter, value, variant, className } = this.props
     return (
-      <div className="w-100">
+      <div className={`w-100 ${className}`}>
         <Button
           className="top-search-side-dropdown w-100"
           id="basic-button"

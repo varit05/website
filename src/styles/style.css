@@ -134,6 +134,22 @@ a:hover {
   outline: 0 !important;
   box-shadow: 0 0 0 0.2rem rgba(29, 82, 212, 0.5) !important; }
 
+.top-search-and-filter .right-side-filter {
+  /* padding: 20px;
+  margin: auto; */
+  background-color: #ffffff;
+  border-radius: 100px;
+  border: 1px solid #dfe5ee; }
+
+.top-search-and-filter .right-side-filter .right-filter-dropdown {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  margin: auto; }
+
+.top-search-and-filter .right-side-filter .right-filter-dropdown ::after {
+  position: initial; }
+
 .search-logo {
   width: 56px;
   margin: auto;
