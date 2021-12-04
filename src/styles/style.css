@@ -150,6 +150,37 @@ a:hover {
 .top-search-and-filter .right-side-filter .right-filter-dropdown ::after {
   position: initial; }
 
+.harvest-provider {
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #dfe5ee;
+  box-sizing: border-box;
+  border-radius: 100px;
+  height: 64px;
+  align-items: center;
+  position: relative; }
+
+.harvest-provider .provider-drop-down {
+  width: 100%;
+  position: relative;
+  height: 100%; }
+
+.harvest-provider .provider-drop-down div {
+  height: 100%; }
+
+.harvest-provider .provider-drop-down div input {
+  border: 0;
+  border-radius: 100px;
+  font-size: 14px;
+  height: 100%; }
+
+.provider-drop-down .form-control:focus {
+  outline: none !important;
+  box-shadow: none !important; }
+
+.border-none {
+  border: none !important; }
+
 .search-logo {
   width: 56px;
   margin: auto;

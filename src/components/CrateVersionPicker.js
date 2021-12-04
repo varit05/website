@@ -74,7 +74,7 @@ export default class CrateVersionPicker extends Component {
           allowNew
           newSelectionPrefix="Version:"
           emptyLabel=""
-          filterBy={this.filter}
+          // filterBy={this.filter}
           selectHintOnEnter
         />
       </div>

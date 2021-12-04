@@ -18,9 +18,10 @@ import ComponentList from '../../../ComponentList'
 import ButtonsBar from './ButtonsBar'
 import FullDetailPage from '../../../FullDetailView/FullDetailPage'
 import FilterList from '../../Ui/FilterList'
+import ProviderListDropdown from '../../Ui/ProviderListDropdown'
 import SortList from '../../Ui/SortList'
 import ContributePrompt from '../../../ContributePrompt'
-import { curateFilters, types, getParamsToUrl, getParamsFromUrl } from '../../../../utils/utils'
+import { curateFilters, types, getParamsToUrl, getParamsFromUrl, providers } from '../../../../utils/utils'
 import SpdxPicker from '../../../SpdxPicker'
 import FilterBar from '../../../FilterBar'
 import EntitySpec from '../../../../utils/entitySpec'
@@ -35,12 +36,14 @@ class PageBrowse extends SystemManagedList {
     super(props)
     this.state = {
       activeSort: 'releaseDate-desc',
-      searchFocused: false
+      searchFocused: false,
+      selectedProvider: providers[0]
     }
     this.onFilter = this.onFilter.bind(this)
     this.onSort = this.onSort.bind(this)
     this.updateData = this.updateData.bind(this)
     this.renderFilterBar = this.renderFilterBar.bind(this)
+    this.onProviderChange = this.onProviderChange.bind(this)
   }
 
   componentDidMount() {
@@ -107,10 +110,7 @@ class PageBrowse extends SystemManagedList {
                 />
               </div>
             </div>
-            <div className="search-dropdown-wrapper">
-              {/* {this.renderFilter(types, 'Type', 'type')} */}
-              {this.renderFilter(curateFilters, 'Fix something', 'curate', 'success')}
-            </div>
+            <div className="search-dropdown-wrapper">{this.renderProvider('Type', 'success')}</div>
           </div>
           <div className="right-side-filter mx-5 col-2">
             {this.renderFilter(curateFilters, 'Fix something', 'curate', 'success', 'right-filter-dropdown')}
@@ -163,6 +163,10 @@ class PageBrowse extends SystemManagedList {
         doPromptContribute={this.doPromptContribute}
       />
     )
+  }
+
+  onProviderChange(item) {
+    this.setState({ selectedProvider: item })
   }
 
   // Overrides the default onFilter method
@@ -241,6 +245,18 @@ class PageBrowse extends SystemManagedList {
         onFilter={this.onFilter}
         variant={variant}
         className={className || ''}
+      />
+    )
+  }
+
+  renderProvider(title, variant, className) {
+    return (
+      <ProviderListDropdown
+        title={title}
+        value={this.state.selectedProvider}
+        onProviderChange={this.onProviderChange}
+        variant={variant}
+        className={'harvest-provider border-none'}
       />
     )
   }

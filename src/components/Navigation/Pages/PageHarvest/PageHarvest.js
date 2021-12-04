@@ -20,13 +20,14 @@ import {
   Section
 } from '../../../'
 import { uiNavigation, uiHarvestUpdateQueue, uiNotificationNew } from '../../../../actions/ui'
+import { providers } from '../../../../utils/utils'
 import EntitySpec from '../../../../utils/entitySpec'
-import ProviderButtons from '../../Ui/ProviderButtons'
+import ProviderListDropdown from '../../Ui/ProviderListDropdown'
 
 class PageHarvest extends Component {
   constructor(props) {
     super(props)
-    this.state = { activeProvider: 'npmjs' }
+    this.state = { activeProvider: providers[0] }
     this.harvestHandler = this.harvestHandler.bind(this)
     this.onAddRequest = this.onAddRequest.bind(this)
     this.onRemoveRequest = this.onRemoveRequest.bind(this)
@@ -70,7 +71,16 @@ class PageHarvest extends Component {
 
   renderProviderButtons() {
     const { activeProvider } = this.state
-    return <ProviderButtons activeProvider={activeProvider} onClick={this.onClick} />
+    return (
+      <ProviderListDropdown
+        title={'Type'}
+        value={activeProvider}
+        onProviderChange={this.onClick}
+        variant={'success'}
+        className="harvest-provider"
+      />
+    )
+    // return <ProviderButtons activeProvider={activeProvider} onClick={this.onClick} />
   }
 
   renderActionButton() {
@@ -103,15 +113,15 @@ class PageHarvest extends Component {
         <Row className="show-grid">
           <Col md={6}>{this.renderProviderButtons()}</Col>
           <Col md={4}>
-            {activeProvider === 'github' && <GitHubSelector onChange={this.onAddRequest} />}
-            {activeProvider === 'mavencentral' && <MavenSelector onChange={this.onAddRequest} />}
-            {activeProvider === 'npmjs' && <NpmSelector onChange={this.onAddRequest} />}
-            {activeProvider === 'nuget' && <NuGetSelector onChange={this.onAddRequest} />}
-            {activeProvider === 'cratesio' && <CrateSelector onChange={this.onAddRequest} />}
-            {activeProvider === 'packagist' && <ComposerSelector onChange={this.onAddRequest} />}
-            {activeProvider === 'pypi' && <PyPiSelector onChange={this.onAddRequest} />}
-            {activeProvider === 'rubygems' && <RubyGemsSelector onChange={this.onAddRequest} />}
-            {activeProvider === 'debian' && <DebianSelector onChange={this.onAddRequest} />}
+            {activeProvider.value === 'github' && <GitHubSelector onChange={this.onAddRequest} />}
+            {activeProvider.value === 'mavencentral' && <MavenSelector onChange={this.onAddRequest} />}
+            {activeProvider.value === 'npmjs' && <NpmSelector onChange={this.onAddRequest} />}
+            {activeProvider.value === 'nuget' && <NuGetSelector onChange={this.onAddRequest} />}
+            {activeProvider.value === 'cratesio' && <CrateSelector onChange={this.onAddRequest} />}
+            {activeProvider.value === 'packagist' && <ComposerSelector onChange={this.onAddRequest} />}
+            {activeProvider.value === 'pypi' && <PyPiSelector onChange={this.onAddRequest} />}
+            {activeProvider.value === 'rubygems' && <RubyGemsSelector onChange={this.onAddRequest} />}
+            {activeProvider.value === 'debian' && <DebianSelector onChange={this.onAddRequest} />}
           </Col>
           <Col md={2} className="harvest-action">
             {this.renderActionButton()}
