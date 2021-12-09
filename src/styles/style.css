@@ -113,7 +113,8 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 924px; }
+  max-width: 924px;
+  padding: 0; }
 
 .top-search-bar .search-bar-container {
   width: 100%;
@@ -170,7 +171,7 @@ a:hover {
 
 .harvest-provider .provider-drop-down div input {
   border: 0;
-  border-radius: 100px;
+  border-radius: 0;
   font-size: 14px;
   height: 100%; }
 
@@ -361,6 +362,9 @@ a:hover {
   width: 100%;
   border: none;
   font-size: 14px; }
+
+.dropdown-menu.show {
+  top: 8px !important; }
 
 /* table */
 .clearly-table {
