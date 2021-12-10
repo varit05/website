@@ -106,7 +106,8 @@ class ComponentButtons extends Component {
               this.handleMenu()
               this.revertComponent(component)
             }}
-            className="clearly-menu-btns"
+            className={`clearly-menu-btns ${!hasChange(component) ? 'disabled-btn' : ''}`}
+            disabled={!hasChange(component)}
           >
             Revert Changes
           </button>
