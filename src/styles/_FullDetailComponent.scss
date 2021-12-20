@@ -184,9 +184,37 @@
   }
 }
 
+@mixin btn-danger {
+  border-color: $color_red !important;
+  background: $color_red !important;
+  color: $white !important;
+
+  &:hover {
+    border-color: $color_red !important;
+    background: darken($color_red, 10%) !important;
+    color: $white !important;
+  }
+
+  &[disabled],
+  &[disabled]:hover {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
 .detail-page-header-right {
+  .d-contents {
+    display: contents;
+  }
+  .mr-2 {
+    margin-right: 10px;
+  }
   .contribute-btn {
     @include btn-success;
+    @include btn-wide;
+  }
+  .revert-btn {
+    @include btn-danger;
     @include btn-wide;
   }
 }
@@ -609,7 +637,6 @@
 }
 
 #source-picker {
-
   > div + div {
     margin-top: 12px;
   }

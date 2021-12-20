@@ -81,13 +81,24 @@ export class AbstractFullDetailsView extends Component {
           inspectedCuration={inspectedCuration}
           component={component}
           renderContributeButton={
-            <Button
-              className="contribute-btn"
-              disabled={isEmpty(changes) || isEmpty(harvest.item)}
-              onClick={this.doPromptContribute}
-            >
-              Contribute
-            </Button>
+            <div className="d-contents">
+              {!isEmpty(changes) && (
+                <Button
+                  className="revert-btn mr-2"
+                  disabled={isEmpty(changes) || isEmpty(harvest.item)}
+                  onClick={e => this.handleRevert()}
+                >
+                  Revert
+                </Button>
+              )}
+              <Button
+                className="contribute-btn"
+                disabled={isEmpty(changes) || isEmpty(harvest.item)}
+                onClick={this.doPromptContribute}
+              >
+                Contribute
+              </Button>
+            </div>
           }
         />
         <ContributePrompt
