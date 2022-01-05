@@ -343,6 +343,7 @@ class PageBrowse extends SystemManagedList {
               <div className={classNames('clearly-table flex-grow', { loading: components.isFetching })}>
                 <i className="fas fa-spinner fa-spin" />
                 <ComponentList
+                  aria-role="row"
                   multiSelectEnabled={this.multiSelectEnabled}
                   readOnly={false}
                   list={components.transformedList}

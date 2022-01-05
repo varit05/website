@@ -70,6 +70,9 @@ export default class FilterBar extends Component {
     const { options, value, onSearch } = this.props
     return (
       <AsyncTypeahead
+        inputProps={{
+          name: 'filter-search'
+        }}
         id="filter-bar"
         className="filter-bar"
         ref={typeahead => (this.typeahead = typeahead)}

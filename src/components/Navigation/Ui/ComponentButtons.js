@@ -88,7 +88,7 @@ class ComponentButtons extends Component {
     const isDefinitionEmpty = Definition.isDefinitionEmpty(definition)
     return (
       <>
-        <IconButton className="menuOpenBtn" onClick={this.handleMenu}>
+        <IconButton className="menuOpenBtn" onClick={this.handleMenu} aria-label="button">
           <MoreVertIcon fontSize="large" />
         </IconButton>
         <div className={`clearly-menu ${this.state.menuOpen ? 'opened' : 'closed'}`}>

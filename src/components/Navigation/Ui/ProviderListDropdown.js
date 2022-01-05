@@ -51,6 +51,7 @@ class ProviderListDropdown extends Component {
           positionFixed
           filterBy={this.filter}
           selectHintOnEnter
+          aria-label="provider-drop-down"
         />
         <div className="search-logo">
           <img src={searchSvg} alt="search" />

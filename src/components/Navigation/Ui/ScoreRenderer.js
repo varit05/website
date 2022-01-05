@@ -44,7 +44,7 @@ class ScoreRenderer extends Component {
     return colors[Math.min(colors.length - 1, bucket)]
   }
   fontColor(score, topScore = 100, customColors) {
-    const colors = customColors || ['#ce3643', '#ed9f00', '#00875a']
+    const colors = customColors || ['#ce3643', '#996600', '#007950']
     const percentScore = score / topScore
     const bucket = Math.floor(percentScore * colors.length)
     return colors[Math.min(colors.length - 1, bucket)]

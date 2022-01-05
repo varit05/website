@@ -79,7 +79,9 @@ class Header extends Component {
     return filter(navigation, filterExpr).map((navItem, i) => {
       return (
         <IndexLinkContainer active={navItem.isSelected} activeClassName="active" to={navItem.to} key={i}>
-          <NavItem onClick={() => (navItem.customUrl ? this.gotoDocs() : null)}>{navItem.title}</NavItem>
+          <NavItem role="button" onClick={() => (navItem.customUrl ? this.gotoDocs() : null)}>
+            {navItem.title}
+          </NavItem>
         </IndexLinkContainer>
       )
     })
@@ -114,7 +116,7 @@ class Header extends Component {
           <div className="container">
             <div className="d-flex justify-content-end align-items-center">
               <nav className="top-nav px-2 d-flex justify-content-center align-items-center">
-                <ul>
+                <ul role="group">
                   <NavItem href="/get-involved">Get Involved</NavItem>
                   {this.renderLogin()}
                 </ul>
@@ -132,7 +134,7 @@ class Header extends Component {
               </div>
               <nav className="clearly-nav d-flex justify-content-end align-items-center">
                 {this.state.menuOpen && (
-                  <ul>
+                  <ul role="group">
                     {/* {this.renderDocs()} */}
                     {/* {this.renderLogin()} */}
                     {this.renderNavigation(navigation, session?.isAnonymous)}

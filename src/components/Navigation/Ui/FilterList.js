@@ -32,7 +32,6 @@ class FilterList extends Component {
         <Button
           className="top-search-side-dropdown w-100"
           id="basic-button"
-          aria-controls="basic-menu"
           aria-haspopup="true"
           aria-expanded={this.state.menu ? 'true' : undefined}
           onClick={this.handleClick}

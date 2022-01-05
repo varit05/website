@@ -166,6 +166,7 @@ class ComponentList extends React.Component {
         </div>
         <FormGroup className="flex-grow-column ">
           <RowEntityList
+            role="rowgroup1"
             list={list}
             listLength={listLength}
             loadMoreRows={loadMoreRows}
