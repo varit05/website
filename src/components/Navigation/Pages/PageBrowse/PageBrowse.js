@@ -209,7 +209,6 @@ class PageBrowse extends SystemManagedList {
     ]
 
     return (
-      // OMG, structural whitespace?!
       <div className="section--filter-bar">
         <div className="active-filters">
           <ActiveFilters
